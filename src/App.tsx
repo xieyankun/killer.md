@@ -1,7 +1,6 @@
-/* tslint-disable */
-import * as CodeMirror from 'codemirror';
-import * as Marked from 'marked'
+
 import * as React from 'react';
+import Markdown from './components/editor'
 
 import './App.css';
 
@@ -14,35 +13,32 @@ interface IStete {
 }
 
 class App extends React.Component<{}, IStete> {
-
-  private test: HTMLElement | null
-
   constructor(props: Readonly<{}>) {
     super(props)
   }
 
-  public componentDidMount() {
-    const codemirror = document.querySelector('.codemirror');
+  // public componentDidMount() {
+  //   const codemirror = document.querySelector('.codemirror');
 
-    window.console.log('CodeMirror', Marked);
+  //   window.console.log('CodeMirror', Marked);
 
-    const myCodeMirror = CodeMirror(codemirror as HTMLElement, {
-      mode: 'javascript',
-      value: '',
-    });
+  //   const myCodeMirror = CodeMirror(codemirror as HTMLElement, {
+  //     mode: 'javascript',
+  //     value: '',
+  //   });
 
-    myCodeMirror.on('change', (instance, changeObj) => {
-      window.console.log(instance, changeObj)
-      window.console.log(instance.getValue())
-      const value = instance.getValue()
-      // const content = document.querySelector('.content');
+  //   myCodeMirror.on('change', (instance, changeObj) => {
+  //     window.console.log(instance, changeObj)
+  //     window.console.log(instance.getValue())
+  //     const value = instance.getValue()
+  //     // const content = document.querySelector('.content');
 
-      if (this.test != null) {
-        this.test.innerHTML = Marked(value);
-      }
+  //     if (this.test != null) {
+  //       this.test.innerHTML = Marked(value);
+  //     }
 
-    })
-  }
+  //   })
+  // }
 
   public render() {
     return (
@@ -51,11 +47,11 @@ class App extends React.Component<{}, IStete> {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <div className="codemirror" />
-        <div className="content" ref={(com) => {this.test = com} } />
+        <Markdown />
+        {/* <div className="md">
+          <div className="codemirror" />
+          <div className="content" ref={(com) => {this.test = com} } />
+        </div> */}
       </div>
     );
   }

@@ -22,13 +22,10 @@
   font-size: large;
 }
 
-.codemirror{
-  width: 800px;
-  height: 400px;
-  margin: 0 auto;
-  text-align: left;
-  border: 1px solid #222;
+* {
+  box-sizing: border-box;
 }
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
