@@ -5,7 +5,7 @@ import * as React from 'react';
 
 import 'codemirror/lib/codemirror.css'
 
-import './main.css'
+import './main.scss'
 
 interface IStete {
   test: string,
