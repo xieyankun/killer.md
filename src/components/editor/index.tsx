@@ -3,6 +3,8 @@ import * as CodeMirror from 'codemirror';
 import * as Marked from 'marked'
 import * as React from 'react';
 
+import 'prettify'
+
 import 'codemirror/lib/codemirror.css'
 import 'github-markdown-css'
 
@@ -33,7 +35,12 @@ class KillerMd extends React.Component<{}, IStete> {
     });
     
     if (this.test != null) {
-      this.test.innerHTML = Marked(initCodeValue);
+      // this.test.innerHTML = Marked(initCodeValue);
+      const v = `<pre><code class="prettyprint">function() {
+        console.log(000)
+        console.log(111)
+        }</code></pre>`
+      this.test.innerHTML = Marked(v);
     }
 
     myCodeMirror.on('change', (instance, changeObj) => {
@@ -42,6 +49,8 @@ class KillerMd extends React.Component<{}, IStete> {
       const value = instance.getValue()
       // const content = document.querySelector('.content');
       if (this.test != null) {
+        window.console.log(Marked(value))
+
         this.test.innerHTML = Marked(value);
       }
     })
