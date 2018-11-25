@@ -1,11 +1,10 @@
 import * as React from 'react';
 
+import CodeEditor from '../CodeEditor';
+import Preview from './Preview';
 import Tools from './Tools';
 
 import './main.scss';
-
-import CodeEditor from '../CodeEditor';
-
 // import codemirror from 'codemirror'
 // import PropTypes from 'prop-types'
 // import isEqual from 'lodash.isequal'
@@ -25,9 +24,12 @@ class Markdown extends React.Component<{}, IStete> {
 
   public render() {
     return (
-      <div className="App">
+      <div className="markdowm">
         <Tools />
-        <CodeEditor />
+        <div className="md-content">
+          <CodeEditor />
+          <Preview />
+        </div>
       </div>
     );
   }

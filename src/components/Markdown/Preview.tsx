@@ -1,22 +1,22 @@
 import * as React from 'react';
 
+
 interface IStete {
   test: string,
 }
 
-class CodeEditor extends React.Component<{}, IStete> {
-
+class Preview extends React.Component<{}, IStete> {
   constructor(props: Readonly<{}>) {
     super(props)
   }
 
   public render() {
     return (
-      <div className="code-editor">
-        <h1>代码编辑</h1>
+      <div className="preview">
+        <h1>预览</h1>
       </div>
     );
   }
 }
 
-export default CodeEditor;
+export default Preview;
