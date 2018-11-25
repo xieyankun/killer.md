@@ -1,6 +1,15 @@
 
 import * as React from 'react';
-import Markdown from './components/editor'
+
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
+
+import Markdown from './components/Markdown';
+import Home from './pages/Home';
+
+import './styles/App.css';
 
 import 'codemirror/lib/codemirror.css'
 
@@ -13,41 +22,14 @@ class App extends React.Component<{}, IStete> {
     super(props)
   }
 
-  // public componentDidMount() {
-  //   const codemirror = document.querySelector('.codemirror');
-
-  //   window.console.log('CodeMirror', Marked);
-
-  //   const myCodeMirror = CodeMirror(codemirror as HTMLElement, {
-  //     mode: 'javascript',
-  //     value: '',
-  //   });
-
-  //   myCodeMirror.on('change', (instance, changeObj) => {
-  //     window.console.log(instance, changeObj)
-  //     window.console.log(instance.getValue())
-  //     const value = instance.getValue()
-  //     // const content = document.querySelector('.content');
-
-  //     if (this.test != null) {
-  //       this.test.innerHTML = Marked(value);
-  //     }
-
-  //   })
-  // }
-
   public render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <Markdown />
-        {/* <div className="md">
-          <div className="codemirror" />
-          <div className="content" ref={(com) => {this.test = com} } />
-        </div> */}
+      <Router>
+      <div id="app">
+        <Route exact={true} path="/" component={ Home }/>
+        <Route path="/markdown" component={ Markdown }/>
       </div>
+      </Router>
     );
   }
 }

@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import Markdown from '../../components/editor'
+import Editor from '../../components/Editor'
 
 import 'codemirror/lib/codemirror.css'
 
@@ -42,7 +42,7 @@ class App extends React.Component<{}, IStete> {
         <header className="App-header">
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <Markdown />
+        <Editor />
         {/* <div className="md">
           <div className="codemirror" />
           <div className="content" ref={(com) => {this.test = com} } />
