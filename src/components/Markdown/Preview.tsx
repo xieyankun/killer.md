@@ -13,7 +13,7 @@ class Preview extends React.Component<{}, IStete> {
   public render() {
     return (
       <div className="preview">
-        <h1>预览</h1>
+        <h1>preview</h1>
       </div>
     );
   }

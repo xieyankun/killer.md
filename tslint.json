@@ -6,6 +6,5 @@
       "node_modules/**/*.ts",
       "coverage/lcov-report/*.js"
     ]
-  },
-  "no-console":false,
+  }
 }
