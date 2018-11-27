@@ -1,25 +1,25 @@
+import * as Marked from 'marked'
 import * as React from 'react';
 
 import CodeEditor from '../CodeEditor';
-import Preview from './Preview';
+// import Preview from './Preview';
 import Tools from './Tools';
 
 import './main.scss';
-// import codemirror from 'codemirror'
-// import PropTypes from 'prop-types'
-// import isEqual from 'lodash.isequal'
-// import debounce from 'lodash.debounce'
 
 
 import 'codemirror/lib/codemirror.css'
 
 interface IStete {
-  test: string,
+  previewContent: string
 }
 
 class Markdown extends React.Component<{}, IStete> {
   constructor(props: Readonly<{}>) {
     super(props)
+    this.state = {
+      previewContent: ''
+    }
   }
 
   public render() {
@@ -27,11 +27,24 @@ class Markdown extends React.Component<{}, IStete> {
       <div className="markdowm">
         <Tools />
         <div className="md-content">
-          <CodeEditor />
-          <Preview />
+          <CodeEditor
+            codeEditorOnChange={ this.updateEditorValue }
+          />
+          <div className="preview">
+            <div dangerouslySetInnerHTML={{__html: this.state.previewContent}} />
+          </div>
+          {/* <Preview /> */}
         </div>
       </div>
     );
+  }
+
+
+  private updateEditorValue = (value: any, cm: any) => {
+    window.console.log('value and cm: ', value, cm)
+    this.setState({
+      previewContent: Marked(value),
+    })
   }
 }
 

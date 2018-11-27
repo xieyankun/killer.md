@@ -11,6 +11,9 @@
 }
 .code-editor{
   flex: 1;
+  height: 100px;
+  border: 1px solid #258b84;
+  overflow: auto;
 }
 .preview{
   flex: 1;

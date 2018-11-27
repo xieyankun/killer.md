@@ -2,17 +2,22 @@ import * as React from 'react';
 
 import * as CodeMirror from 'codemirror';
 
+interface IProps {
+  codeEditorOnChange: (value: any, cm: any) => void;
+}
+
+
 interface IStete {
   test: string,
 }
 
 let CodeEditorHandler = null
 
-class CodeEditor extends React.Component<{}, IStete> {
+class CodeEditor extends React.Component<IProps, IStete> {
   private textareaNode: any;
   private codeEditor: any;
 
-  constructor(props: Readonly<{}>) {
+  constructor(props: Readonly<IProps>) {
     super(props)
   }
 
@@ -47,6 +52,7 @@ class CodeEditor extends React.Component<{}, IStete> {
 
   public codeEditorValueChanged = (instance: any, changeObj: any) => {
     window.console.log('codeEditorValueChanged', instance, changeObj);
+    this.props.codeEditorOnChange(instance.getValue(), changeObj)
   }
 
   private cursorActivity = (cm: any) => {
@@ -58,7 +64,7 @@ class CodeEditor extends React.Component<{}, IStete> {
   }
 
   private scrollChanged = (cm: any) => {
-    window.console.log('scrollChanged', cm);
+    window.console.log('scrollChanged', cm.getScrollInfo());
   }
 
 }
