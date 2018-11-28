@@ -43,7 +43,7 @@ class CodeEditor extends React.Component<IProps, IStete> {
       <div className="code-editor">
         <textarea
           ref={ref => this.textareaNode = ref}
-          defaultValue='qiwoo'
+          defaultValue='标签（空格分隔）： 未分类'
         />
       </div>
     );
