@@ -30,6 +30,7 @@ class Markdown extends React.Component<{}, IStete> {
           <CodeEditor
             codeEditorOnChange={ this.updateEditorValue }
           />
+          <span className="dividing" />
           <div className="preview">
             <div dangerouslySetInnerHTML={{__html: this.state.previewContent}} />
           </div>

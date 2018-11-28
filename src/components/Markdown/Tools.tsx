@@ -14,7 +14,7 @@ class Tools extends React.Component<{}, IStete> {
   public render() {
     return (
       <div className="tools">
-        <h1>工具条</h1>
+        <h1>Tools</h1>
       </div>
     );
   }
