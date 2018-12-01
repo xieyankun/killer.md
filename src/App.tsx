@@ -26,8 +26,8 @@ class App extends React.Component<{}, IStete> {
     return (
       <Router>
       <div id="app">
-        <Route exact={true} path="/" component={ Home }/>
-        <Route path="/markdown" component={ Markdown }/>
+        <Route exact={true} path="/" component={ Markdown }/>
+        <Route path="/home" component={ Home }/>
       </div>
       </Router>
     );

@@ -23,9 +23,11 @@ class CodeEditor extends React.Component<IProps, IStete> {
 
   public componentDidMount () {
 		this.codeEditor = CodeMirror.fromTextArea(this.textareaNode,  {
+      // this.codeEditor = CodeMirror(this.textareaNode,  {
       lineWrapping: true,
+      showCursorWhenSelecting: true,
       tabSize: 2,
-      value: '# 在此处输入标题\n\n标签（空格分隔）： `未分类`\n\n---\n\n在此输入正文'
+      // value: '# 在此处输入标题\n\n标签（空格分隔）： `未分类`\n\n---\n\n在此输入正文'
     })
 
     CodeEditorHandler = this.codeEditor;
@@ -42,9 +44,11 @@ class CodeEditor extends React.Component<IProps, IStete> {
     return (
       <div className="code-editor">
         <textarea
-          ref={ref => this.textareaNode = ref}
-          defaultValue='标签（空格分隔）： 未分类'
+          ref={ ref => this.textareaNode = ref }
+          defaultValue="# 在此处输入标题\n\n标签（空格分隔）： `未分类`\n\n---\n\n在此输入正文"
+          autoFocus={true}
         />
+        {/* <div ref={ ref => this.textareaNode = ref } /> */}
       </div>
     );
   }
