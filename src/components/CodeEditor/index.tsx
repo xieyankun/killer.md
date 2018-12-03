@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as CodeMirror from 'codemirror';
 
 interface IProps {
+  options: object,
   codeEditorOnChange: (value: any, cm: any) => void;
 }
 
@@ -22,13 +23,10 @@ class CodeEditor extends React.Component<IProps, IStete> {
   }
 
   public componentDidMount () {
-		this.codeEditor = CodeMirror.fromTextArea(this.textareaNode,  {
-      // this.codeEditor = CodeMirror(this.textareaNode,  {
-      lineWrapping: true,
-      showCursorWhenSelecting: true,
-      tabSize: 2,
-      // value: '# 在此处输入标题\n\n标签（空格分隔）： `未分类`\n\n---\n\n在此输入正文'
-    })
+    const options = this.props.options;
+
+		this.codeEditor = CodeMirror.fromTextArea(this.textareaNode,  options)
+		// this.codeEditor = CodeMirror(this.textareaNode,  options)
 
     CodeEditorHandler = this.codeEditor;
 
@@ -45,10 +43,13 @@ class CodeEditor extends React.Component<IProps, IStete> {
       <div className="code-editor">
         <textarea
           ref={ ref => this.textareaNode = ref }
-          defaultValue="# 在此处输入标题\n\n标签（空格分隔）： `未分类`\n\n---\n\n在此输入正文"
+          defaultValue="# 在此处输入标题"
           autoFocus={true}
         />
-        {/* <div ref={ ref => this.textareaNode = ref } /> */}
+        {/* <div
+          defaultValue="# 在此处输入标题"
+          ref={ ref => this.textareaNode = ref }
+        /> */}
       </div>
     );
   }

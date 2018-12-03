@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import Editor from '../../components/Editor'
+import Editor from '../../components/EditorMarkdown'
 
 import 'codemirror/lib/codemirror.css'
 

@@ -6,6 +6,7 @@ import {
   Route
 } from 'react-router-dom';
 
+import Editor from './components/Editor';
 import Markdown from './components/Markdown';
 import Home from './pages/Home';
 
@@ -27,7 +28,8 @@ class App extends React.Component<{}, IStete> {
       <Router>
       <div id="app">
         <Route exact={true} path="/" component={ Markdown }/>
-        <Route path="/home" component={ Home }/>
+        <Route path="/editor" component={ Editor }/>
+        <Route path="/home" component={ Home } />
       </div>
       </Router>
     );

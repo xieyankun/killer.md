@@ -3,6 +3,8 @@ import * as CodeMirror from 'codemirror';
 import * as Marked from 'marked'
 import * as React from 'react';
 
+import Tools from './Tools';
+
 import 'prettify'
 
 import 'codemirror/lib/codemirror.css'
@@ -11,68 +13,80 @@ import 'github-markdown-css'
 import './main.scss'
 
 interface IStete {
-  test: string,
+  previewNode: string,
+  previewContent: string,
 }
 
-class KillerMd extends React.Component<{}, IStete> {
+let CodeEditorHandler = null;
 
-  private test: HTMLElement | null
+class KillerMd extends React.Component<{}, IStete> {
+  private codeEditor: any;
+  private editorNode: any;
+  // private previewNode: HTMLElement | null;
 
   constructor(props: Readonly<{}>) {
     super(props)
+    this.state = {
+      previewContent: '',
+      previewNode: '',
+    }
   }
 
   public componentDidMount() {
-    const codemirror = document.querySelector('.codemirror');
-    const initCodeValue = '# 在此处输入标题\n\n标签（空格分隔）： `未分类`\n\n---\n\n在此输入正文';
+    // const codemirror = document.querySelector('.codemirror');
 
-    window.console.log('CodeMirror', Marked);
+    const initCodeValue = '# 在此处输入标题\n\n> 标签: `我的笔记` `标签`\n\n---\n\n在此输入笔记的正文内容\n\n```\nHello world\n```';
 
-    const myCodeMirror = CodeMirror(codemirror as HTMLElement, {
+    this.setState({
+      previewContent: Marked(initCodeValue),
+    })
+    
+    this.codeEditor = CodeMirror(this.editorNode, {
       lineWrapping: true,   // 代码折叠
       tabSize: 2,
       value: initCodeValue
-    });
-    
-    if (this.test != null) {
-      // this.test.innerHTML = Marked(initCodeValue);
-      const v = `<pre><code class="prettyprint">function() {
-        console.log(000)
-        console.log(111)
-        }</code></pre>`
-      this.test.innerHTML = Marked(v);
-    }
-
-    myCodeMirror.on('change', (instance, changeObj) => {
-      window.console.log(instance, changeObj)
-      window.console.log(instance.getValue())
-      const value = instance.getValue()
-      // const content = document.querySelector('.content');
-      if (this.test != null) {
-        window.console.log(Marked(value))
-
-        this.test.innerHTML = Marked(value);
-      }
     })
+      
+    CodeEditorHandler = this.codeEditor;
 
+    CodeEditorHandler.on('change', this.codeEditorValueChanged)
 
   }
 
   public render() {
     return (
-      <div className="md">
-        <div className="tool">
-          <ul>
-            <li>H1</li>
-          </ul>
-        </div>
+      <div className="markdowm">
+        <Tools />
 
-        <div className="md-editor">
-          <div className="codemirror" />
-          <div className="content markdown-body" ref={(com) => {this.test = com} } />
+        <div className="md-content">
+          <div
+            className="codemirror"
+            ref={ ref => this.editorNode = ref }
+          />  
+
+          <span className="dividing" />
+
+          <div
+            className="content markdown-body"
+            dangerouslySetInnerHTML={{__html: this.state.previewContent}}
+            // ref={(ref) => {this.previewNode = ref} }
+          />
+          {/* <Preview /> */}
+
         </div>
       </div>
     );
+  }
+
+  public codeEditorValueChanged = (instance:any, changeObj:any) => {
+    window.console.log(instance, changeObj)
+    window.console.log(instance.getValue())
+
+    const value = instance.getValue()
+    this.setState({
+      previewContent: Marked(value),
+    })
+
   }
 }
 

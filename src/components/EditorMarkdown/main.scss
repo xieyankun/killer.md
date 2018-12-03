@@ -1,8 +1,8 @@
 .md{
-  overflow: hidden;
-  margin: 0 auto;
   width: 80%;
   height: 500px;
+  margin: 0 auto;
+  overflow: hidden;
   box-shadow: 0 0 4px #eee;
 
   .tool{
@@ -17,24 +17,23 @@
   height: 500px;
 }
 .codemirror{
-  float: left;
-  overflow: auto;
   width: 50%;
   height: 100%;
-  border: 1px solid #eee;
+  overflow: auto;
   text-align: left;
+  border: 1px solid #eee;
+  float: left;
   font-size: 16px;
 }
 .CodeMirror{
   height: 100%;
 }
 .content{
-  float: right;
-  overflow: auto;
-  padding: 5px 5px 15px;
   width: 50%;
   height: 100%;
+  overflow: auto;
   border: 1px solid #eee;
+  float: right;
 }
 .content img{
   width: 100%;
@@ -44,13 +43,13 @@ h1{
   color: #0077bb;
 }
 code{
-  padding: 2px 4px;
   border: 0;
-  border-radius: 4px;
   background-color: #D6DBDF;
+  border-radius: 4px;
   color: #2C3E50;
-  white-space: nowrap;
   font-size: 90%;
+  padding: 2px 4px;
+  white-space: nowrap;
 }
 
 /* Pretty printing styles. Used with prettify.js. */
@@ -78,9 +77,9 @@ ol.linenums { margin-left: 35px;}
 ol.linenums > li { padding-left: 15px;}
 pre.prettyprint {
     display: block;
-    padding: 9.5px;
     background-color: rgba(102, 128, 153, 0.05);
     box-shadow: 0 1px 2px rgba(255, 255, 255, 0.1) inset, 45px 0 0 rgba(102, 128, 153, 0.05) inset, 0 1px 0 rgba(102, 128, 153, 0.05);
+    padding: 9.5px;
 }
 
 /* li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 { list-style-type: none } */
